@@ -4,29 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc148c41-fdac-4f2f-98f3-de155c98d0aa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Application.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/ApplicationRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Dao/ItemDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Enum/Types.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Exception/AlreadyExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Exception/DoesNotExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Model/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Test/ItemDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/Test/UserDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/src/UMS/UserInterface.java" afterDir="false" />
+    <list default="true" id="5ed78379-6e22-4b9f-b1c9-3943f26bf6eb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +23,17 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="UMS" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
