@@ -3,13 +3,14 @@ package UMS.Model;
 import java.security.Timestamp;
 import java.util.Objects;
 
+//Java object that will act as the item.
 public final class Item {
 
-
+        //Identifier used for the Item Object
         private int itemId;
 
 
-
+        //
         private  String itemName;
 
         private Timestamp timeItemAdded;

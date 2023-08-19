@@ -6,7 +6,7 @@ package UMS.Dao;
     import UMS.Enum.Types;
 
     import java.util.ArrayList;
-import java.util.List;
+    import java.util.List;
 
     public class ItemDao {
 
@@ -16,7 +16,7 @@ import java.util.List;
 
         //Initializing the item-list in the constructor.
         public ItemDao() {
-            this.itemList = new ArrayList<>(itemList);
+            this.itemList = new ArrayList<>();
 
 
         }

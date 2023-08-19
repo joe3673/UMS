@@ -50,8 +50,8 @@ public class UserDao {
 
         for (User userToFind : userList)
             if (username.equals(userToFind.getUserName())) {
+                throw new AlreadyExistException("The user already exist.");
 
-                return false;
             }
         return true;
     }
