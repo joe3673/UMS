@@ -12,13 +12,11 @@ public class UserDao {
 
     private final List<User> userList;
 
-    private final ItemDao itemDao;
 
 
     public UserDao() {
 
         this.userList = new ArrayList<>();
-        itemDao = new ItemDao();
     }
 
     //Accepts the username and password to build a new user object.
@@ -49,17 +47,18 @@ public class UserDao {
     public boolean userExistCheck(String username) {
 
         for (User userToFind : userList)
-            if (username.equals(userToFind.getUserName())) {
-                throw new AlreadyExistException("The user already exist.");
+            if (username.equalsIgnoreCase(userToFind.getUserName())) {
+               return false;
 
             }
         return true;
     }
 
 
-    public void createNewUser(String name, String password, String email) {
 
-        User user = new User(name, password, email);
+    public User createNewUser(String name, String password) {
+
+        User user = new User(name, password);
         try {
             userExistCheck(user.getUserName());
         } catch (AlreadyExistException e) {
@@ -68,6 +67,7 @@ public class UserDao {
 
         user.setUserId(createNewUserId());
         userList.add(user);
+        return user;
 
     }
 
@@ -86,13 +86,8 @@ public class UserDao {
     public String createNewUserId() {
         UUID uuid = UUID.randomUUID();
 
-        return uuid.toString() + "-" + userList.size();
+        return uuid + "-" + userList.size();
     }
-
-
-
-
-
 
     public List<Item> getItemList(String userId){
         User user = findUserById(userId);
@@ -104,9 +99,9 @@ public class UserDao {
 
     public void createDummyUsers(){
 
-        User user1 = new User("Joseph", "Joe123", "JoesephB@myself.com");
-        User user2 = new User("Alex", "Alexmane123", "Alexm@gmail.com.com");
-        User user3 = new User("Sarah", "Sarah4436", "SSsarah@aol.com");
+        User user1 = new User("Joseph", "Joe123");
+        User user2 = new User("Alex", "Alexmane123");
+        User user3 = new User("Sarah", "Sarah4436");
 
 
         userList.add(user1);

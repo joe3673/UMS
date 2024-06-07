@@ -1,16 +1,15 @@
 package UMS.Model;
 
+import UMS.Enum.Types;
+
 import java.security.Timestamp;
 import java.util.Objects;
 
-//Java object that will act as the item.
-public final class Item {
+    public final class Item {
 
         //Identifier used for the Item Object
         private int itemId;
 
-
-        //
         private  String itemName;
 
         private Timestamp timeItemAdded;
@@ -19,14 +18,15 @@ public final class Item {
 
         private  String itemDescription;
 
+        private double price;
 
+        private final Types itemType;
 
-        private final String itemType;
-
-        public Item(String itemName, String itemType){
+        public Item(String itemName, Types itemType, double price){
 
             this.itemName = itemName;
             this.itemType = itemType;
+            this.price = price;
             this.itemDescription= "The description on this Item wasn't set.";
 
 
@@ -48,7 +48,7 @@ public final class Item {
         }
 
 
-        public String getItemType() {
+        public Types getItemType() {
             return itemType;
         }
 
@@ -84,10 +84,25 @@ public final class Item {
             this.timeItemRemoved = timeItemRemoved;
         }
 
+        public double getPrice() {
+        return price;
+        }
+
+        public void setPrice(double price) {
+        this.price = price;
+        }
+
         @Override
         public String toString() {
-            return " Id : " + itemId +
-                    " / Item Name = " + itemName + "\n \n";
+            return "Item{" +
+                    "itemId=" + itemId +
+                    ", itemName='" + itemName + '\'' +
+                    ", timeItemAdded=" + timeItemAdded +
+                    ", timeItemRemoved=" + timeItemRemoved +
+                    ", itemDescription='" + itemDescription + '\'' +
+                    ", price=" + price +
+                    ", itemType=" + itemType +
+                    '}';
         }
 
         @Override
@@ -103,6 +118,6 @@ public final class Item {
             return itemId == otherItem.itemId && Objects.equals(itemName, otherItem.itemName);
         }
 
-    }
+        }
 
 
