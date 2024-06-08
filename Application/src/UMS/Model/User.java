@@ -1,7 +1,5 @@
 package UMS.Model;
 
-import UMS.Dao.ItemDao;
-
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +24,8 @@ import java.util.Objects;
      private ZonedDateTime userLastLogoutTime;
 
      private double cash;
+
+     private double bankAccount;
 
      public User(String userName, String password) {
 
@@ -139,6 +139,18 @@ import java.util.Objects;
 
      public void setCash(double cash) {
          this.cash = cash;
+     }
+
+     public void setPersonalItems(List<Item> personalItems) {
+         this.personalItems = personalItems;
+     }
+
+     public double getAccountBalance() {
+         return bankAccount;
+     }
+
+     public void setAccountBalance(double bankAccount) {
+         this.bankAccount = bankAccount;
      }
 
      @Override

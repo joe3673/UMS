@@ -1,28 +1,37 @@
-package UMS;
+package UMS.Display;
 
 import UMS.Dao.AdminDao;
 import UMS.Dao.ItemDao;
 import UMS.Dao.UserDao;
 import UMS.Exception.AlreadyExistException;
-import UMS.Model.Admin;
+import UMS.Games.DailyPick;
+import UMS.Games.NumberPickGame;
+import UMS.Games.SlotsGame;
+import UMS.Games.TriviaGame;
 import UMS.Model.User;
+import UMS.MySqlConnection;
 
 import java.time.ZonedDateTime;
 import java.util.Scanner;
 
 public class UserInterface {
 
-
-
     private UserDao userDao;
-
-    private User loggedInUser;
 
     private ItemDao itemDao;
 
     private AdminDao adminDao;
 
+    private DailyPick dailyPick;
+
+    private NumberPickGame numberPickGame;
+
+    private SlotsGame slotsGame;
+
+    private TriviaGame triviaGame;
+
     Scanner scanner = new Scanner(System.in);
+
 
 
     public UserInterface(){
@@ -30,6 +39,7 @@ public class UserInterface {
         itemDao = new ItemDao();
         userDao.createDummyUsers();
         adminDao.createAdmin();
+        MySqlConnection.getConnection();
 
     }
 
@@ -40,7 +50,7 @@ public class UserInterface {
     // Populates User List with dummy users
     // Checks the User Database for matching for any matching information before creating a new user
     //2. If user can't authenticate, offer the option to create a user or close the application.
-    public Boolean userAuthentication(){
+    public boolean userAuthentication(){
 
         System.out.println("Welcome to the User Item Management System. \n \n ");
         System.out.println("Do you have a UMS account? \n  Y or N  \n Type 'End' to end the application\n");
@@ -81,11 +91,11 @@ public class UserInterface {
                     System.out.println("The username or Password entered was incorrect. Please try again");
                     return userAuthentication();
                 }
-              loggedInUser = userDao.createNewUser(userName, password);
+              User user = userDao.createNewUser(userName, password);
                 System.out.println("You have successfully logged in!");
-                loggedInUser.setUserLoginTime(ZonedDateTime.now());
+                user.setUserLoginTime(ZonedDateTime.now());
 
-                return mainMenu();
+                return mainMenu(user);
 
 
             }
@@ -99,41 +109,55 @@ public class UserInterface {
 
 
     //add logout option!!!!
-    public boolean mainMenu(){
+    public boolean mainMenu(User loggedInUser){
 
         itemDao.createDummyItems();
 
         System.out.println("Hello and welcome to the Main Menu " + loggedInUser.getUserName() +" Please choose a numeric option from our list: ");
         System.out.println("\n \n");
         System.out.println("""
-                1. Go to Shop Items\s
-                2. View personal Items
-                3. View profile details
-                4. Questions for cash
-                5. Return to Main menu""");
+                1. Go to Shop menu\s
+                2. Access Items Menu
+                3. Access profile Menu
+                4. Access User Bank Account Balance
+                5. Access Mini Game Menu
+                6. Access Admin Menu
+                6. Quit the program""");
 
         int menuOption = 0;
 
         menuOption = scanner.nextInt();
 
-        switch (menuOption){
-            case 1:
+        switch (menuOption) {
+            case 1 -> {
                 System.out.println("These are all the items in the store");
                 itemDao.displayItems();
-                break;
+            }
+            case 2 -> shopMenu(loggedInUser);
+            case 3 -> profileMenu(loggedInUser);
+            case 4 -> {
+                System.out.println("You have " + loggedInUser.getAccountBalance() + " in your account. Would you like to add more?");
+                System.out.println("Y or N");
+                String answer = scanner.next();
+                if (answer.equalsIgnoreCase("Y")) {
+                    System.out.println("How much would you like to add?");
+                    double cash = scanner.nextDouble();
+                    System.out.println("You have successfully added " + cash + " to your account.");
+                }}
+            case 5 -> {
+                System.out.println("Returning to Main Menu");
+                return mainMenu(loggedInUser);
+                }
+            case 6 -> {
+                System.out.println("Thank you for using the user-item management system. ");
+                return false;
+            }
 
-            case 2:
-                loggedInUser.getPersonalItems();
-                break;
 
-            case 3:
-                System.out.println(" This isn't done yet");
-                break;
+            }
+            System.out.println("Invalid input. Please try again.");
 
-
-        }
-        return false;
-
+        return mainMenu(loggedInUser);
     }
     //4. The main menu will consist of a list of options available for the user:
     // Populates General Item List with dummy items
@@ -143,9 +167,25 @@ public class UserInterface {
     //  - Clear List
     // Sign out and end program
 
-    public boolean adminMenu(){
+
+    public boolean shopMenu(User user){
+        System.out.println("Welcome to the user shop menu");
 
         return false;
+    }
+    public boolean profileMenu(User user){
+
+       return false;
+    }
+    public boolean gameMenu(User user){
+
+        return false;
+    }
+
+
+    public Boolean adminMenu(){
+
+        return null;
     }
 
 
