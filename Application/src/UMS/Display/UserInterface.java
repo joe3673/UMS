@@ -1,8 +1,8 @@
 package UMS.Display;
 
-import UMS.Dao.AdminDao;
-import UMS.Dao.ItemDao;
-import UMS.Dao.UserDao;
+import UMS.Dao.AdminService;
+import UMS.Dao.ItemService;
+import UMS.Dao.UserService;
 import UMS.Exception.AlreadyExistException;
 import UMS.Games.DailyPick;
 import UMS.Games.NumberPickGame;
@@ -16,11 +16,11 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private UserDao userDao;
+    private UserService userDao;
 
-    private ItemDao itemDao;
+    private ItemService itemDao;
 
-    private AdminDao adminDao;
+    private AdminService adminDao;
 
     private DailyPick dailyPick;
 
@@ -35,8 +35,8 @@ public class UserInterface {
 
 
     public UserInterface(){
-        userDao = new UserDao();
-        itemDao = new ItemDao();
+        userDao = new UserService();
+        itemDao = new ItemService();
         userDao.createDummyUsers();
         adminDao.createAdmin();
         MySqlConnection.getConnection();
@@ -122,7 +122,7 @@ public class UserInterface {
                 4. Access User Bank Account Balance
                 5. Access Mini Game Menu
                 6. Access Admin Menu
-                6. Quit the program""");
+                7. Logout""");
 
         int menuOption = 0;
 
@@ -152,8 +152,6 @@ public class UserInterface {
                 System.out.println("Thank you for using the user-item management system. ");
                 return false;
             }
-
-
             }
             System.out.println("Invalid input. Please try again.");
 

@@ -4,7 +4,7 @@ import UMS.Model.Admin;
 
 import java.util.List;
 
-public class AdminDao {
+public class AdminService {
 
 
     private List<Admin> admins;

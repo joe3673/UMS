@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class UserDao {
+public class UserService {
 
     private final List<User> userList;
 
 
 
-    public UserDao() {
+    public UserService() {
 
         this.userList = new ArrayList<>();
     }

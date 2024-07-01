@@ -1,7 +1,5 @@
 package UMS.Model;
 
-import UMS.Enum.Types;
-
 import java.security.Timestamp;
 import java.util.Objects;
 
@@ -20,14 +18,18 @@ import java.util.Objects;
 
         private double price;
 
-        private final Types itemType;
+        private final String itemType;
 
-        public Item(String itemName, Types itemType, double price){
+        private int amount;
+
+        public Item(String itemName, String itemType, double price){
 
             this.itemName = itemName;
             this.itemType = itemType;
             this.price = price;
             this.itemDescription= "The description on this Item wasn't set.";
+            this.amount = 0;
+
 
 
         }
@@ -48,7 +50,7 @@ import java.util.Objects;
         }
 
 
-        public Types getItemType() {
+        public String getItemType() {
             return itemType;
         }
 
@@ -90,6 +92,14 @@ import java.util.Objects;
 
         public void setPrice(double price) {
         this.price = price;
+        }
+
+        public int getAmount() {
+            return amount;
+        }
+
+        public void setAmount(int amount) {
+            this.amount = amount;
         }
 
         @Override

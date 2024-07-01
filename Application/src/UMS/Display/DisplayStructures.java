@@ -1,7 +1,7 @@
 package UMS.Display;
 
 import UMS.Dao.ItemDao;
-import UMS.Dao.UserDao;
+import UMS.Dao.UserService;
 import UMS.Model.Item;
 import UMS.Model.User;
 
@@ -11,12 +11,12 @@ public class DisplayStructures {
 
     ItemDao itemDao;
 
-    UserDao userDao;
+    UserService userDao;
 
 
     public DisplayStructures(){
         itemDao = new ItemDao();
-        userDao = new UserDao();
+        userDao = new UserService();
     }
 
     public void displayUserAsTable(User user){
