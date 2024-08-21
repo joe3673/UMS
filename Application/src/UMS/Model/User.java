@@ -1,22 +1,18 @@
 package UMS.Model;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
  public class User {
 
 
-     private String userId;
+     private int userId;
      private String userName;
 
      private String password;
 
      private int tokens;
-
-     private List<Item> personalItems;
 
      private ZonedDateTime userLoginTime;
 
@@ -27,10 +23,13 @@ import java.util.Objects;
 
      private double bankAccount;
 
-     public User(String userName, String password) {
+     public User(int userID, String userName, String password, int tokens, double cash, double bankAccount) {
 
          this.userName = userName;
          this.password = password;
+         this.tokens = tokens;
+         this.cash = cash;
+         this.bankAccount = bankAccount;
      }
 
      public boolean checkPassword(String password) {
@@ -38,31 +37,7 @@ import java.util.Objects;
          return password.equals(getPassword());
      }
 
-     public void addItemToList(Item item) {
 
-         Item itemToAdd = new Item(item.getItemName(), item.getItemType(), item.getPrice());
-         personalItems.add(itemToAdd);
-         System.out.println("Your item has been added successfully!");
-
-     }
-
-     public void removeItemFromList(Item item) {
-         int indexToRemove = -1;
-         for (int i = 0; i < personalItems.size(); i++) {
-             if (personalItems.get(i).equals(item)) {
-                 indexToRemove = i;
-                 System.out.println("Item was not removed. Please try again.");
-                 break;
-
-             }
-         }
-
-         // If item was found, remove it from the list
-         if (indexToRemove != -1) {
-             personalItems.remove(indexToRemove);
-             System.out.println("Item was successfully removed");
-         }
-     }
 
      //This how we check to make sure the password is stored inside the server with the following commands on the app
      //If false will return an error when applied to a method in the Dao
@@ -96,16 +71,12 @@ import java.util.Objects;
      }
 
 
-     public String getUserId() {
+     public int getUserId() {
          return userId;
      }
 
-     public void setUserId(String userId) {
+     public void setUserId(int userId) {
          this.userId = userId;
-     }
-
-     public List<Item> getPersonalItems() {
-         return new ArrayList<>(personalItems);
      }
 
 
@@ -139,10 +110,6 @@ import java.util.Objects;
 
      public void setCash(double cash) {
          this.cash = cash;
-     }
-
-     public void setPersonalItems(List<Item> personalItems) {
-         this.personalItems = personalItems;
      }
 
      public double getAccountBalance() {
